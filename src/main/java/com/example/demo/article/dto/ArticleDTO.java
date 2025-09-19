@@ -2,13 +2,7 @@ package com.example.demo.article.dto;
 
 
 import com.example.demo.article.entity.Article;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Getter;
-import org.springframework.data.annotation.LastModifiedDate;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
