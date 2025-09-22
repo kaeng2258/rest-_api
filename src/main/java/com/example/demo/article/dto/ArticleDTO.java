@@ -1,8 +1,8 @@
 package com.example.demo.article.dto;
 
-
 import com.example.demo.article.entity.Article;
 import lombok.Getter;
+
 import java.time.LocalDateTime;
 
 @Getter
@@ -19,5 +19,6 @@ public class ArticleDTO {
         this.content = article.getContent();
         this.createdDate = article.getCreatedDate();
         this.modifiedDate = article.getModifiedDate();
+
     }
 }

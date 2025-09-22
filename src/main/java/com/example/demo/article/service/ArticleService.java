@@ -1,10 +1,8 @@
 package com.example.demo.article.service;
 
-
 import com.example.demo.article.dto.ArticleDTO;
 import com.example.demo.article.entity.Article;
 import com.example.demo.article.repository.ArticleRepository;
-import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,26 +13,25 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 public class ArticleService {
-
     private final ArticleRepository articleRepository;
 
-    public List<ArticleDTO> getList(){
+    public List<ArticleDTO> getList() {
         List<Article> articleList = articleRepository.findAll();
 
         List<ArticleDTO> articleDTOList = articleList.stream()
-                .map(article->new ArticleDTO(article))
+                .map(article -> new ArticleDTO(article))
                 .collect(Collectors.toList());
 
-        return articleDTOList;
+        return  articleDTOList;
     }
 
-    public Article getArticle(Long id){
+    public Article getArticle(Long id) {
         Optional<Article> optionalArticle = articleRepository.findById(id);
 
         return optionalArticle.orElse(null);
     }
 
-    public Article write(String subject, String content){
+    public Article write(String subject, String content) {
         Article article = Article.builder()
                 .subject(subject)
                 .content(content)
@@ -45,7 +42,7 @@ public class ArticleService {
         return article;
     }
 
-    public Article update(Article article, String subject, String content){
+    public Article update(Article article, String subject, String content) {
         article.setSubject(subject);
         article.setContent(content);
 
@@ -54,9 +51,7 @@ public class ArticleService {
         return article;
     }
 
-    public Article delete(Article article){
+    public void delete(Article article) {
         articleRepository.delete(article);
-
-        return article;
     }
 }
