@@ -27,16 +27,8 @@ public class ApiV1ArticleController {
 
     @GetMapping("")
     public RsData<ArticlesResponse> list() {
-        List<ArticleDTO> articleList = new ArrayList<>();
+        List<ArticleDTO> articleList = articleService.getList();
 
-        Article article1 = new Article("제목 1", "내용1");
-        articleList.add(new ArticleDTO(article1));
-
-        Article article2 = new Article("제목 2", "내용2");
-        articleList.add(new ArticleDTO(article2));
-
-        Article article3 = new Article("제목 3", "내용3");
-        articleList.add(new ArticleDTO(article3));
         return RsData.of("200", "게시글다건조회성공", new ArticlesResponse(articleList));
     }
 
@@ -46,29 +38,23 @@ public class ApiV1ArticleController {
     public RsData<ArticleResponse> getArticle(@PathVariable("id") Long id) {
         Article article = new Article("제목1", "내용1");
 
-        ArticleDTO articleDTO = new ArticleDTO(article);
+        ArticleDTO articleDTO = articleService.getArticle(id);
 
         return RsData.of("200", "게시글단건조회성공", new ArticleResponse(articleDTO));
     }
 
     @PostMapping("")
     public String crete(@Valid @RequestBody ArticleCreateRequest articleCreateRequest) {
-        System.out.println(articleCreateRequest.getSubject());
-        System.out.println(articleCreateRequest.getContent());
         return "등록";
     }
 
     @PatchMapping("/{id}")
     public String modify(@PathVariable("id") Long id,@Valid @RequestBody ArticleModifyRequest articleModifyRequest){
-        System.out.println(id);
-        System.out.println(articleModifyRequest.getSubject());
-        System.out.println(articleModifyRequest.getContent());
         return "수정";
     }
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") Long id) {
-        System.out.println(id);
         return "삭제";
     }
 }
