@@ -1,15 +1,15 @@
-package com.example.demo.article.controller;
+package com.example.demo.domain.article.controller;
 
 
-import com.example.demo.article.dto.ArticleDTO;
-import com.example.demo.article.entity.Article;
-import com.example.demo.article.request.ArticleCreateRequest;
-import com.example.demo.article.request.ArticleModifyRequest;
-import com.example.demo.article.response.ArticleCreateResponse;
-import com.example.demo.article.response.ArticleModifyResponse;
-import com.example.demo.article.response.ArticleResponse;
-import com.example.demo.article.response.ArticlesResponse;
-import com.example.demo.article.service.ArticleService;
+import com.example.demo.domain.article.dto.ArticleDTO;
+import com.example.demo.domain.article.entity.Article;
+import com.example.demo.domain.article.dto.request.ArticleCreateRequest;
+import com.example.demo.domain.article.dto.request.ArticleModifyRequest;
+import com.example.demo.domain.article.dto.response.ArticleCreateResponse;
+import com.example.demo.domain.article.dto.response.ArticleModifyResponse;
+import com.example.demo.domain.article.dto.response.ArticleResponse;
+import com.example.demo.domain.article.dto.response.ArticlesResponse;
+import com.example.demo.domain.article.service.ArticleService;
 import com.example.demo.global.RsData.RsData;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -17,12 +17,10 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping(value = "/api/v1/articles", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/v1/articles")
 @RequiredArgsConstructor
 @Tag(name = "ApiV1ArticleController", description = "게시글 CRUD API")
 public class ApiV1ArticleController {
